@@ -1,3 +1,5 @@
+import XCTest
+
 class Cabin {
     enum Capacity{
         case twoPerson
@@ -82,7 +84,7 @@ class Ship {
     var crew: [CrewMember] {
         return people.compactMap{ $0 as? CrewMember}
     }
-    private let engines: [Engine] = [Engine(power: .fourkHP), Engine(power: .twokHP)]
+    let engines: [Engine] = [Engine(power: .fourkHP), Engine(power: .twokHP)]
     let attractions: [Attraction] = [Bar(), Bar(), Restaurant()]
     
     init(people: [Person]) {
@@ -112,6 +114,10 @@ class Ship {
         case .runOnly(let enginePowerToRun):
             engines.first(where: {
                 $0.power == enginePowerToRun
+                
+            })?.start()
+            engines.first(where: {
+                $0.power != enginePowerToRun
                 
             })?.stop()
         }
@@ -171,14 +177,78 @@ func friendGenerator(tourists: [Tourist]) {
     }
 }
 
+//
+//let crew = [CrewMember].init(repeating: CrewMember(), count: 50)
+//var tourists: [Tourist] = (0..<300).map{ _ in Tourist(age: Int.random(in: 1...80)) }
+//friendGenerator(tourists: tourists)
+//let people: [Person] = crew + tourists
+//
+//let cruiseShip = Ship(people: people)
+//
+//cruiseShip.assignCabins()
+//
 
-let crew = [CrewMember].init(repeating: CrewMember(), count: 50)
-var tourists: [Tourist] = (0..<300).map{ _ in Tourist(age: Int.random(in: 1...80)) }
-friendGenerator(tourists: tourists)
-let people: [Person] = crew + tourists
 
-let cruiseShip = Ship(people: people)
+class ShipTests: XCTestCase {
+    
+    var sut: Ship!
+    
+    func testGiverOrderStartBothWhenBothStoppedThenBothStarted() {
+        sut = Ship(people: [])
+        sut.performCaptainOrder(order: .runBothEngines)
+        XCTAssertTrue(sut.engines[0].running)
+        XCTAssertTrue(sut.engines[1].running)
+    }
+    
+    func testGiverOrderStartOneWhenBothStoppedThenOneStarted() {
+        sut = Ship(people: [])
+        sut.performCaptainOrder(order: .runOnly(.fourkHP))
+        XCTAssertTrue(sut.engines.first(where: { $0.power == .fourkHP})!.running)
+        XCTAssertFalse(sut.engines.first(where: { $0.power != .fourkHP})!.running)
+    }
+    
+   
+}
 
-cruiseShip.assignCabins()
+class AttractionTests: XCTestCase {
+    var sut: Attraction!
+    
+    func testGivenNoTouristsInsideWhenAddingTouristThenTouristAppendedToList() {
+        sut = Attraction(capacity: 5)
+        let tourist = Tourist(age: 1)
+        XCTAssertTrue(sut.add(tourist: tourist), "Failed to add tourist")
+        XCTAssertEqual(sut.guests.count, 1, "Wrong number of guests")
+    }
+    
+    func testGivenCapacity1WhenAddingTwoTouristsThenOneeTouristAdded() {
+        sut = Attraction(capacity: 1)
+        let tourist = Tourist(age: 1)
+        sut.add(tourist: tourist)
+        XCTAssertFalse(sut.add(tourist: tourist), "Second turist was added exceeding attraction capacity")
+        XCTAssertEqual(sut.guests.count, 1, "Wrong number of guests")
+    }
+    
+}
 
+class BarTests: XCTestCase {
+    
+    var sut: Bar!
+    
+    func testGivenBarWhenGrownUpEnteringThenAddedToTheList() {
+        sut = Bar()
+        let tourist = Tourist(age: 45)
+        XCTAssertTrue (sut.add(tourist: tourist))
+        XCTAssertEqual(sut.guests.count, 1)
+    }
+    
+    func testGivenBarWhenTeenEnteringThenNotAddedToTheList() {
+        sut = Bar()
+        let tourist = Tourist(age: 15)
+        XCTAssertFalse(sut.add(tourist: tourist))
+        XCTAssertEqual(sut.guests.count, 0)
+    }
+}
 
+ShipTests.defaultTestSuite.run()
+AttractionTests.defaultTestSuite.run()
+BarTests.defaultTestSuite.run()
