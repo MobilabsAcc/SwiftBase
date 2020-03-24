@@ -4,13 +4,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Dashboard-->
         <scene sceneID="bHw-kc-69T">
             <objects>
-                <viewController title="Dashboard" id="Jas-hJ-Lb3" customClass="ViewController" customModule="mvcSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dashboard" id="Jas-hJ-Lb3" customClass="ViewController" customModule="weatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q0z-LQ-Zfb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +20,7 @@
                                 <rect key="frame" x="173" y="0.0" width="241" height="185"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJI-Eb-bjQ">
-                                <rect key="frame" x="112" y="248" width="190.5" height="115"/>
+                                <rect key="frame" x="112" y="204" width="190.5" height="159"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">To add your
@@ -55,7 +56,7 @@ first location
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SwI-TT-mkw">
                                 <rect key="frame" x="0.0" y="782" width="414" height="114"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-EA-kUo" customClass="SwitchButton" customModule="mvcSample" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-EA-kUo" customClass="SwitchButton" customModule="weatherApp" customModuleProvider="target">
                                         <rect key="frame" x="48" y="32" width="53" height="34"/>
                                         <state key="normal" title="°C / °F">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,8 +65,11 @@ first location
                                             <action selector="unitTapped:" destination="Jas-hJ-Lb3" eventType="touchUpInside" id="pQf-K2-ZAz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHJ-hB-Jcc">
-                                        <rect key="frame" x="360" y="28.5" width="30" height="41"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHJ-hB-Jcc" customClass="PlusButton" customModule="weatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="344" y="24" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Vyg-ek-HJy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                         <state key="normal" title="+">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,10 +81,12 @@ first location
                                 </subviews>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.61568627450980395" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="HHJ-hB-Jcc" firstAttribute="trailing" secondItem="SwI-TT-mkw" secondAttribute="trailingMargin" constant="-12" id="2c1-AS-Vzr"/>
+                                    <constraint firstItem="HHJ-hB-Jcc" firstAttribute="centerY" secondItem="kJK-EA-kUo" secondAttribute="centerY" id="DIO-E0-SeU"/>
                                     <constraint firstAttribute="bottom" secondItem="kJK-EA-kUo" secondAttribute="bottom" constant="48" id="QVf-6i-paZ"/>
-                                    <constraint firstItem="kJK-EA-kUo" firstAttribute="leading" secondItem="SwI-TT-mkw" secondAttribute="leading" constant="48" id="TM8-Se-SEj"/>
-                                    <constraint firstAttribute="trailing" secondItem="HHJ-hB-Jcc" secondAttribute="trailing" constant="24" id="btp-Qz-3k4"/>
-                                    <constraint firstItem="HHJ-hB-Jcc" firstAttribute="centerY" secondItem="kJK-EA-kUo" secondAttribute="centerY" id="gQe-L1-Npv"/>
+                                    <constraint firstItem="kJK-EA-kUo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SwI-TT-mkw" secondAttribute="leading" symbolic="YES" id="TM8-Se-SEj"/>
+                                    <constraint firstAttribute="bottom" secondItem="HHJ-hB-Jcc" secondAttribute="bottom" constant="40" id="bnt-G1-N7n"/>
+                                    <constraint firstItem="HHJ-hB-Jcc" firstAttribute="leading" secondItem="kJK-EA-kUo" secondAttribute="trailing" constant="243" id="mL3-0W-EfJ"/>
                                     <constraint firstAttribute="height" constant="114" id="wAf-de-vSV"/>
                                 </constraints>
                             </view>
@@ -100,7 +106,7 @@ first location
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yrG-d8-0ry"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dashboard" id="f2a-qg-weL"/>
+                    <navigationItem key="navigationItem" title="Dashboard" largeTitleDisplayMode="never" id="f2a-qg-weL"/>
                     <connections>
                         <outlet property="bottomBar" destination="SwI-TT-mkw" id="ERJ-1l-H5d"/>
                         <segue destination="PlW-vU-VTx" kind="show" identifier="toDeatails" id="uXe-87-JFl"/>
@@ -108,12 +114,65 @@ first location
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2F-gt-jKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2420" y="102"/>
+            <point key="canvasLocation" x="2418.840579710145" y="101.78571428571428"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="iZy-ad-hVc">
+            <objects>
+                <viewController id="xNU-0a-wmE" customClass="LocationViewController" customModule="weatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FxQ-QP-txZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mzY-Oh-GAP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="818" id="OiU-0A-A6J"/>
+                                    <constraint firstAttribute="width" constant="414" id="eeV-X5-jDg"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6db-Gu-jJz">
+                                    <size key="itemSize" width="176" height="176"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mcp-0G-4Mv" customClass="LocationViewCell" customModule="weatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbl-21-7Fk">
+                                            <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="9WG-Md-HqJ"/>
+                                                <constraint firstAttribute="height" constant="100" id="GmX-9q-uhM"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="jbl-21-7Fk" firstAttribute="leading" secondItem="mcp-0G-4Mv" secondAttribute="leadingMargin" constant="-8" id="86H-cN-gQe"/>
+                                            <constraint firstItem="jbl-21-7Fk" firstAttribute="top" secondItem="mcp-0G-4Mv" secondAttribute="topMargin" constant="-8" id="dsH-Cu-Z7N"/>
+                                        </constraints>
+                                        <size key="customSize" width="176" height="176"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mzY-Oh-GAP" firstAttribute="top" secondItem="eWX-B2-N25" secondAttribute="top" id="HGc-Kp-N2F"/>
+                            <constraint firstItem="mzY-Oh-GAP" firstAttribute="centerX" secondItem="FxQ-QP-txZ" secondAttribute="centerX" id="mAI-t6-0E0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eWX-B2-N25"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vM1-zG-g2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="839.73214285714278"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Q2Y-qV-5kI">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="PlW-vU-VTx" customClass="DetailsViewController" customModule="mvcSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="PlW-vU-VTx" customClass="DetailsViewController" customModule="weatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S6h-ud-c3h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,13 +207,15 @@ first location
         <!--Navigation Controller-->
         <scene sceneID="ZPK-0R-Dvl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U4g-fQ-kyp" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="U4g-fQ-kyp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q9o-tA-6TP">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jJz-PP-c6E">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Jas-hJ-Lb3" kind="relationship" relationship="rootViewController" id="4K2-bP-SDw"/>
                     </connections>

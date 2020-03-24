@@ -6,8 +6,6 @@ final class SearchViewController: UIViewController {
     typealias ImageItem = (imageType: CellImage, color: UIColor)
     private let locationCellIdentifier = "locationCell"
     
-    private var images = [ImageItem(imageType: CellImage.paperplane, color: UIColor.white),
-                          ImageItem(imageType: CellImage.clock, color: UIColor.white)]
 
     private var items = [SearchItem(boldText: "Warsaw", lightText: "Poland"),
                          SearchItem(boldText: "Gdynia", lightText: "Poland"),
@@ -95,9 +93,10 @@ extension SearchViewController: UITableViewDataSource {
         }
            
         
-        cell.imageCell = images[0]
-        if indexPath.row != 0 {
-            cell.imageCell = images[1]
+        if indexPath.row == 0 {
+            cell.imageCell = .paperplane
+        }else{
+            cell.imageCell = .clock
         }
         return cell
     }

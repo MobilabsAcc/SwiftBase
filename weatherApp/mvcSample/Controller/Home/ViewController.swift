@@ -76,7 +76,8 @@ class ViewController: UIViewController {
 //        3. Navigate to details page using modal presentation
 //        navigateWithModalPresent()
 
-        navigationController?.pushViewController(SearchViewController(), animated: true)
+//        navigationController?.pushViewController(SearchViewController(), animated: true)
+        navigationController?.pushViewController(LocationViewController(), animated: true)
     }
     
 //    Called when we return to this view controller

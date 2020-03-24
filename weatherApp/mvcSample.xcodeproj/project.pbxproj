@@ -18,6 +18,10 @@
 		20ED3491241180A200827E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20ED348F241180A200827E8A /* LaunchScreen.storyboard */; };
 		20ED349C241180A200827E8A /* mvcSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED349B241180A200827E8A /* mvcSampleTests.swift */; };
 		C00559822423B8B000F8C431 /* CellImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00559812423B8B000F8C431 /* CellImage.swift */; };
+		C034A9282427FD5100C7AF4F /* WeatherCellImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034A9272427FD5100C7AF4F /* WeatherCellImage.swift */; };
+		C034A92A24280F3200C7AF4F /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034A92924280F3200C7AF4F /* PlusButton.swift */; };
+		C0DB862524240174001AB424 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB862424240174001AB424 /* LocationCollectionViewCell.swift */; };
+		C0DB862724240191001AB424 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB862624240191001AB424 /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		20ED349B241180A200827E8A /* mvcSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvcSampleTests.swift; sourceTree = "<group>"; };
 		20ED349D241180A200827E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C00559812423B8B000F8C431 /* CellImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImage.swift; sourceTree = "<group>"; };
+		C034A9272427FD5100C7AF4F /* WeatherCellImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellImage.swift; sourceTree = "<group>"; };
+		C034A92924280F3200C7AF4F /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		C0DB862424240174001AB424 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0DB862624240191001AB424 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,7 @@
 		2089864324213B8A00B94BE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C0DB862624240191001AB424 /* LocationViewController.swift */,
 				20ED3486241180A100827E8A /* SceneDelegate.swift */,
 				20ED3488241180A100827E8A /* ViewController.swift */,
 			);
@@ -88,6 +97,8 @@
 			children = (
 				208986482421501500B94BE2 /* LocationTableViewCell.swift */,
 				C00559812423B8B000F8C431 /* CellImage.swift */,
+				C0DB862424240174001AB424 /* LocationCollectionViewCell.swift */,
+				C034A9272427FD5100C7AF4F /* WeatherCellImage.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -96,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				20913927241823180080865D /* SwitchButton.swift */,
+				C034A92924280F3200C7AF4F /* PlusButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -297,6 +309,10 @@
 				20ED3489241180A100827E8A /* ViewController.swift in Sources */,
 				20ED3485241180A100827E8A /* AppDelegate.swift in Sources */,
 				20ED3487241180A100827E8A /* SceneDelegate.swift in Sources */,
+				C034A92A24280F3200C7AF4F /* PlusButton.swift in Sources */,
+				C0DB862524240174001AB424 /* LocationCollectionViewCell.swift in Sources */,
+				C034A9282427FD5100C7AF4F /* WeatherCellImage.swift in Sources */,
+				C0DB862724240191001AB424 /* LocationViewController.swift in Sources */,
 				20913928241823180080865D /* SwitchButton.swift in Sources */,
 				C00559822423B8B000F8C431 /* CellImage.swift in Sources */,
 			);
